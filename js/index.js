@@ -22,7 +22,7 @@ for (var k = 0; k < uniques.length; k++) {
 //  console.log(JSON.stringify(instances));
 // instances is [1,2,3,2,1]
 
-// get x position  
+// get x position
 var xPosLoop = [];
 var counterX = 0;
 for (var m = 0; m < instances.length; m++) {
@@ -77,6 +77,16 @@ for (var i = 0; i < textArray.length; i++) {
     //.attr("rx", 4)
     .attr('stroke', 'black');
 
+    var text = svg.append('foreignObject')
+      .attr('x', (xPosLoop[i] * elementWidth) + 10)
+      .attr('y', (yPosLoop[i] * elementHeight) + 17)
+      .attr('width', 140)
+      .attr('height', 85)
+      .append("xhtml:body")
+      .html('<div style="width: 138px; text-align: center; display: table-cell; vertical-align: middle">' + textArray[i] + '</div>');
+
+
+
   var symbol = svg.append('foreignObject')
     .attr('x', (xPosLoop[i] * elementWidth) + 10)
     .attr('y', (yPosLoop[i] * elementHeight))
@@ -85,14 +95,6 @@ for (var i = 0; i < textArray.length; i++) {
     .append("xhtml:body")
     .html('<div style="width: 138px; text-align: right; display: table-cell; vertical-align: middle"> &#9658;** </div>');
 
-  var text = svg.append('foreignObject')
-    .attr('x', (xPosLoop[i] * elementWidth) + 10)
-    .attr('y', (yPosLoop[i] * elementHeight) + 17)
-    .attr('width', 140)
-    .attr('height', 85)
-    .append("xhtml:body")
-    .html('<div style="width: 138px; text-align: center; display: table-cell; vertical-align: middle">' + textArray[i] + '</div>');
-
-}
+  }
 
 // console.log();
