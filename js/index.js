@@ -89,7 +89,7 @@ for (var i = 0; i < textArray.length; i++) {
     .attr('x', (xPosLoop[i] * elementWidth) + 10)
     .attr('y', (yPosLoop[i] * elementHeight))
     .attr('width', 140)
-    .attr('height', 10)
+    .attr('height', 13)
     .append("xhtml:body")
     .html('<div style="width: 138px; text-align: right; display: table-cell; vertical-align: middle"> &#9658;** </div>');
 
