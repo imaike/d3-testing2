@@ -79,13 +79,11 @@ for (var i = 0; i < textArray.length; i++) {
 
     var text = svg.append('foreignObject')
       .attr('x', (xPosLoop[i] * elementWidth) + 10)
-      .attr('y', (yPosLoop[i] * elementHeight) + 17)
+      .attr('y', (yPosLoop[i] * elementHeight) + 20)
       .attr('width', 140)
       .attr('height', 85)
       .append("xhtml:body")
       .html('<div style="width: 138px; text-align: center; display: table-cell; vertical-align: middle">' + textArray[i] + '</div>');
-
-
 
   var symbol = svg.append('foreignObject')
     .attr('x', (xPosLoop[i] * elementWidth) + 10)
