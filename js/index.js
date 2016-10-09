@@ -95,4 +95,52 @@ for (var i = 0; i < textArray.length; i++) {
 
   }
 
+  // when called, will open a new tab with the SVG
+  // which can then be right-clicked and 'save as...'
+  function saveSVG(){
+
+      // get styles from all required stylesheets
+      // http://www.coffeegnome.net/converting-svg-to-png-with-canvg/
+      var style = "\n";
+      var requiredSheets = ['phylogram_d3.css', 'open_sans.css']; // list of required CSS
+      for (var i=0; i<document.styleSheets.length; i++) {
+          var sheet = document.styleSheets[i];
+          if (sheet.href) {
+              var sheetName = sheet.href.split('/').pop();
+              if (requiredSheets.indexOf(sheetName) != -1) {
+                  var rules = sheet.rules;
+                  if (rules) {
+                      for (var j=0; j<rules.length; j++) {
+                          style += (rules[j].cssText + '\n');
+                      }
+                  }
+              }
+          }
+      }
+
+      var svg = d3.select("svg"),
+          img = new Image(),
+          serializer = new XMLSerializer(),
+          width = svg.node().getBBox().width,
+          height = svg.node().getBBox().height;
+
+      // prepend style to svg
+      svg.insert('defs',":first-child");
+      d3.select("svg defs")
+          .append('style')
+          .attr('type','text/css')
+          .html(style);
+
+      // generate IMG in new tab
+      var svgStr = serializer.serializeToString(svg.node());
+      img.src = 'data:image/svg+xml;base64,'+window.btoa(unescape(encodeURIComponent(svgStr)));
+      window.open().document.write('<img src="' + img.src + '"/>');
+  }
+
+  // save button
+  d3.select('body')
+      .append("button")
+      .on("click",saveSVG)
+      .attr('class', 'btn btn-success');
+
 // console.log();
