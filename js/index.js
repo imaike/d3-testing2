@@ -101,22 +101,22 @@ for (var i = 0; i < textArray.length; i++) {
 
       // get styles from all required stylesheets
       // http://www.coffeegnome.net/converting-svg-to-png-with-canvg/
-      var style = "\n";
-      var requiredSheets = ['phylogram_d3.css', 'open_sans.css']; // list of required CSS
-      for (var i=0; i<document.styleSheets.length; i++) {
-          var sheet = document.styleSheets[i];
-          if (sheet.href) {
-              var sheetName = sheet.href.split('/').pop();
-              if (requiredSheets.indexOf(sheetName) != -1) {
-                  var rules = sheet.rules;
-                  if (rules) {
-                      for (var j=0; j<rules.length; j++) {
-                          style += (rules[j].cssText + '\n');
-                      }
-                  }
-              }
-          }
-      }
+      // var style = "\n";
+      // var requiredSheets = ['phylogram_d3.css', 'open_sans.css']; // list of required CSS
+      // for (var i=0; i<document.styleSheets.length; i++) {
+      //     var sheet = document.styleSheets[i];
+      //     if (sheet.href) {
+      //         var sheetName = sheet.href.split('/').pop();
+      //         if (requiredSheets.indexOf(sheetName) != -1) {
+      //             var rules = sheet.rules;
+      //             if (rules) {
+      //                 for (var j=0; j<rules.length; j++) {
+      //                     style += (rules[j].cssText + '\n');
+      //                 }
+      //             }
+      //         }
+      //     }
+      // }
 
       var svg = d3.select("svg"),
           img = new Image(),
